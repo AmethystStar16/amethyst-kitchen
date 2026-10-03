@@ -2,88 +2,77 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 <title>My Kitchen</title>
 <style>
-body{font-family:Arial,sans-serif;margin:0;background:#f7f7f5;color:#222}
-header{background:white;padding:20px 18px;position:sticky;top:0;border-bottom:1px solid #ddd}
-h1{margin:0 0 4px;font-size:25px}.sub{color:#777;font-size:13px}
-nav{display:flex;gap:8px;padding:12px;position:sticky;top:82px;background:#f7f7f5;z-index:2}
-button{border:0;border-radius:12px;padding:11px 13px;background:#222;color:white}
-button.light{background:white;color:#222;border:1px solid #ddd}
-main{padding:0 12px 30px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.card{background:white;border:1px solid #e2e2e2;border-radius:16px;padding:15px;margin-bottom:12px}
-.big{font-size:24px;font-weight:bold}.muted{color:#777;font-size:13px}
-input,select{width:100%;box-sizing:border-box;padding:12px;border:1px solid #ddd;border-radius:10px;margin:5px 0 10px;background:white}
-.row{display:flex;gap:8px}.row>*{flex:1}
-.item{display:flex;justify-content:space-between;gap:10px;align-items:center}
-.badge{font-size:12px;background:#eee;border-radius:20px;padding:5px 8px}
-.hidden{display:none}
+*{box-sizing:border-box}body{font-family:Arial,sans-serif;margin:0;background:#f5f4f1;color:#222}header{background:#f5f4f1;padding:22px 22px 12px;position:sticky;top:0;z-index:4}h1{margin:0;font-size:27px}.sub{color:#777;margin-top:5px;font-size:14px}nav{display:flex;gap:9px;padding:12px 18px;background:#f5f4f1;position:sticky;top:82px;z-index:3;overflow:auto}nav button{white-space:nowrap;border:0;border-radius:24px;padding:11px 17px;background:#fff;color:#222;font-weight:700;font-size:14px}nav button.active{background:#a89f95;color:#fff}main{padding:0 18px 90px}.filters{display:flex;gap:8px;overflow:auto;padding:4px 0 14px}.filters button{border:0;border-radius:22px;padding:10px 16px;background:#fff;font-weight:700;white-space:nowrap}.filters button.active{background:#a89f95;color:#fff}.foodcard{background:#fff;border-radius:12px;margin:0 0 13px;overflow:hidden;box-shadow:0 1px 2px #ddd}.foodrow{display:flex;min-height:130px}.thumb{width:42%;min-height:130px;background:#ddd;object-fit:cover}.thumb.placeholder{display:flex;align-items:center;justify-content:center;font-size:52px;background:#e9e5df}.foodinfo{padding:14px 15px;flex:1;min-width:0}.foodname{font-size:19px;font-weight:700;margin-bottom:7px}.meta{color:#555;font-size:14px;line-height:1.55}.badge{display:inline-block;margin-top:8px;border-radius:15px;padding:5px 9px;background:#aaa;color:#fff;font-size:11px;font-weight:700}.badge.expired{background:#b33f67}.badge.soon{background:#c58a48}.badge.ok{background:#999}.amount{float:right;text-align:right;color:#777;font-size:12px}.amount b{display:block;color:#555;font-size:14px;margin-top:2px}.detail{padding:0 15px 14px;border-top:1px solid #eee}.detail img{width:100%;max-height:260px;object-fit:cover;border-radius:10px;margin-top:10px}.actions{display:flex;gap:8px;flex-wrap:wrap}.actions button,.primary,.danger{border:0;border-radius:12px;padding:11px 14px;background:#222;color:#fff;font-size:15px}.light{background:#fff!important;color:#222!important;border:1px solid #ddd!important}.danger{background:#9c294b}.card{background:#fff;border:1px solid #e1dfdb;border-radius:16px;padding:16px;margin-bottom:14px}label{display:block;margin-top:8px;font-weight:600}input,select{width:100%;padding:12px;border:1px solid #ddd;border-radius:11px;margin:6px 0 10px;background:#fff;font-size:16px}.row{display:flex;gap:9px}.row>*{flex:1}.hidden{display:none!important}.small{font-size:12px;color:#777}.scanbox{background:#111;border-radius:16px;padding:10px;margin:10px 0}.scanbox video{width:100%;border-radius:10px}.status{padding:10px;border-radius:10px;background:#f0f0f0;margin:8px 0;font-size:14px}.photo{width:100%;max-height:260px;object-fit:cover;border-radius:10px;margin-top:7px}.countrow{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}.count{background:#fff;border-radius:14px;padding:12px}.count b{font-size:23px;display:block;margin-top:4px}.boxitem{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid #eee}.boxitem:last-child{border-bottom:0}.fab{position:fixed;right:20px;bottom:75px;width:60px;height:60px;border-radius:50%;background:#e22;color:#fff;border:0;font-size:25px;box-shadow:0 3px 12px #999;z-index:5}.empty{text-align:center;color:#888;padding:28px 10px}.titleline{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}.titleline h3{margin:0}
 </style>
 </head>
 <body>
 <header><h1>🏠 My Kitchen</h1><div class="sub">我的家庭食物管理</div></header>
-<nav>
-<button onclick="show('home')">🏠 Home</button>
-<button onclick="show('add')">➕ Add</button>
-<button onclick="show('search')">🔍 Search</button>
-</nav>
+<nav><button id="navHome" class="active" onclick="show('home')">🏠 Home</button><button id="navAdd" onclick="show('add')">➕ Add</button><button id="navBoxes" onclick="show('boxes')">📦 Boxes</button><button id="navSearch" onclick="show('search')">🔍 Search</button></nav>
 <main>
 <section id="home">
-<div class="grid">
-<div class="card"><div>🥬 Fridge</div><div class="big" id="fridgeCount">0</div></div>
-<div class="card"><div>❄️ Freezer</div><div class="big" id="freezerCount">0</div></div>
-<div class="card"><div>🥫 Pantry</div><div class="big" id="pantryCount">0</div></div>
-</div>
-<div class="card"><b>📦 我的食物</b><div id="list" style="margin-top:10px"></div></div>
+<div class="filters"><button id="fAll" class="active" onclick="setFilter('All')">All</button><button id="fPantry" onclick="setFilter('Pantry')">🌿 Pantry</button><button id="fFreezer" onclick="setFilter('Freezer')">❄️ Freezer</button><button id="fFridge" onclick="setFilter('Fridge')">🧊 Fridge</button></div>
+<div class="countrow"><div class="count">🧊 Fridge<b id="fridgeCount">0</b></div><div class="count">❄️ Freezer<b id="freezerCount">0</b></div><div class="count">🌿 Pantry<b id="pantryCount">0</b></div></div>
+<div id="list"></div>
 </section>
 
-<section id="add" class="hidden">
-<div class="card">
-<h3>➕ Add Food</h3>
+<section id="add" class="hidden"><div class="card">
+<div class="titleline"><h3>➕ Add Food</h3><button class="light" onclick="show('boxes')">📦 Manage Boxes</button></div>
 <label>食物名称</label><input id="food" placeholder="例如：三文鱼">
-<div class="row"><div><label>位置</label>
-<select id="loc"><option>Fridge</option><option>Freezer</option><option>Pantry</option></select></div>
-<div><label>数量</label><input id="qty" placeholder="例如：2份"></div></div>
-<label>盒子 / QR编号</label><input id="box" placeholder="例如：F&S-XXL-01">
-<label>放入日期</label><input id="date" type="date">
-<button onclick="addFood()">保存</button>
-</div>
-</section>
+<div class="row"><div><label>位置</label><select id="loc" onchange="suggestDays()"><option>Fridge</option><option>Freezer</option><option>Pantry</option></select></div><div><label>数量</label><input id="qty" placeholder="例如：2份"></div></div>
+<label>📦 扫描 QR 盒子</label><div class="actions"><button type="button" onclick="startScan()">📷 扫描QR</button><button type="button" class="light" onclick="document.getElementById('qrPhoto').click()">🖼️ QR照片</button></div>
+<input id="box" placeholder="扫描后自动填写，例如 F&S-XXL-01" oninput="showBoxInfo()"><input id="qrPhoto" type="file" accept="image/*" capture="environment" class="hidden" onchange="scanPhoto(this)">
+<div id="boxInfo" class="small"></div><div id="scanStatus" class="status hidden"></div>
+<div id="scanner" class="scanbox hidden"><video id="video" playsinline></video><div class="small" style="color:white;margin:6px">把 QR 放在框内，识别后会自动填入。</div><button type="button" onclick="stopScan()">停止扫描</button></div>
+<label>📅 放入日期</label><input id="date" type="date" onchange="updateExpiry()">
+<label>⏳ 保存天数（自动计算到期日）</label><div class="row"><input id="days" type="number" min="1" placeholder="例如：3" onchange="updateExpiry()"><input id="expiry" type="date" readonly></div><div id="expiryText" class="small">这是个人食物记录提醒，不是食品安全保证；不同食物请按包装/可靠食物安全指引调整。</div>
+<label>📸 食物照片（可选）</label><input id="foodPhoto" type="file" accept="image/*" capture="environment" onchange="previewFood(this)"><div id="foodPreview"></div>
+<label>📍 拍下放置位置（例如冰箱哪一层）</label><input id="locationPhoto" type="file" accept="image/*" capture="environment" onchange="previewLocation(this)"><div id="locationPreview"></div>
+<br><button class="primary" onclick="addFood()">保存</button>
+</div></section>
 
-<section id="search" class="hidden">
-<div class="card">
-<h3>🔍 Search</h3>
-<input id="q" oninput="render()" placeholder="搜索食物或盒子编号">
-<div id="results"></div>
-</div>
-</section>
-</main>
+<section id="boxes" class="hidden"><div class="card"><div class="titleline"><h3>📦 我的盒子 / QR</h3><button class="primary" onclick="newBox()">＋新增</button></div><div class="small">第一次把 QR 和盒子绑定好，以后扫一扫就会自动识别。</div><div id="boxList" style="margin-top:8px"></div></div></section>
+
+<section id="boxForm" class="hidden"><div class="card"><h3>📦 设置盒子</h3><label>QR编号</label><div class="actions"><button type="button" onclick="startBoxScan()">📷 扫描QR</button></div><input id="boxId" placeholder="例如 F&S-XXL-01"><label>盒子名称</label><input id="boxName" placeholder="例如 Fresh & Save XXL 2.85L"><label>备注</label><input id="boxNote" placeholder="例如 玻璃盒 / 冰箱用"><button class="primary" onclick="saveBox()">保存盒子</button><button class="light" style="margin-left:8px" onclick="show('boxes')">取消</button><div id="boxScanArea" class="scanbox hidden"><video id="boxVideo" playsinline></video><button type="button" onclick="stopBoxScan()">停止扫描</button></div></div></section>
+
+<section id="search" class="hidden"><div class="card"><h3>🔍 Search</h3><input id="q" oninput="render()" placeholder="搜索食物或盒子编号"><div id="results"></div></div></section>
+</main><button class="fab" onclick="show('add')">＋</button>
 <script>
 let foods=JSON.parse(localStorage.getItem('myKitchenFoods')||'[]');
-function save(){localStorage.setItem('myKitchenFoods',JSON.stringify(foods));render();}
-function addFood(){
- let food=document.getElementById('food').value.trim();
- if(!food){alert('请先输入食物名称');return}
- foods.push({food,loc:loc.value,qty:qty.value,box:box.value,date:date.value});
- ['food','qty','box','date'].forEach(id=>document.getElementById(id).value='');
- save(); show('home');
-}
-function removeFood(i){if(confirm('删除这项食物？')){foods.splice(i,1);save();}}
-function render(){
- let f=foods.filter(x=>x.loc==='Fridge').length;
- let fr=foods.filter(x=>x.loc==='Freezer').length;
- let p=foods.filter(x=>x.loc==='Pantry').length;
- fridgeCount.textContent=f; freezerCount.textContent=fr; pantryCount.textContent=p;
- let query=(document.getElementById('q')?.value||'').toLowerCase();
- let arr=foods.map((x,i)=>({...x,i})).filter(x=>(x.food+' '+x.box).toLowerCase().includes(query));
- let html=arr.length?arr.map(x=>`<div class="card item"><div><b>${esc(x.food)}</b><br><span class="muted">${esc(x.loc)} · ${esc(x.qty||'')} ${x.box?'· '+esc(x.box):''}<br>${x.date||''}</span></div><button class="light" onclick="removeFood(${x.i})">删除</button></div>`).join(''):'<div class="muted">还没有记录</div>';
- list.innerHTML=html;
- if(results) results.innerHTML=html;
-}
-function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
-function show(id){['home','add','search'].forEach(x=>document.getElementById(x).classList.add('hidden'));document.getElementById(id).classList.remove('hidden');render();}
-render();
-</script>
-</body>
-</html>
+let boxes=JSON.parse(localStorage.getItem('myKitchenBoxes')||'[]');
+let locationPhotoData='',foodPhotoData='',stream=null,boxStream=null,scanning=false,boxScanning=false,detector=null,currentFilter='All';
+const $=id=>document.getElementById(id);
+function persist(){try{localStorage.setItem('myKitchenFoods',JSON.stringify(foods));localStorage.setItem('myKitchenBoxes',JSON.stringify(boxes));render();renderBoxes()}catch(e){alert('照片太大，手机储存空间不足。请换较小的照片。')}}
+function show(id){stopScan();stopBoxScan();['home','add','boxes','boxForm','search'].forEach(x=>$(x).classList.add('hidden'));$(id).classList.remove('hidden');['navHome','navAdd','navBoxes','navSearch'].forEach(x=>$(x).classList.remove('active'));if(id==='home')$('navHome').classList.add('active');if(id==='add')$('navAdd').classList.add('active');if(id==='boxes'||id==='boxForm')$('navBoxes').classList.add('active');if(id==='search')$('navSearch').classList.add('active');render();renderBoxes()}
+function setFilter(v){currentFilter=v;['All','Pantry','Freezer','Fridge'].forEach(x=>{let id='f'+x; if($(id))$(id).classList.toggle('active',x===v)});render()}
+function daysDefault(loc){return loc==='Fridge'?3:loc==='Freezer'?30:7}
+function suggestDays(){if(!$('days').value)$('days').value=daysDefault($('loc').value);updateExpiry()}
+function updateExpiry(){let d=$('date').value,days=parseInt($('days').value||daysDefault($('loc').value));if(!d)return;let x=new Date(d+'T12:00:00');x.setDate(x.getDate()+days);$('expiry').value=x.toISOString().slice(0,10);$('expiryText').textContent='提醒到期日：'+formatDate($('expiry').value)+'（可按食物实际情况修改保存天数）'}
+function formatDate(d){if(!d)return '';let [y,m,day]=d.split('-');return `${day}/${m}/${y}`}
+function daysLeft(exp){if(!exp)return null;let a=new Date();a.setHours(0,0,0,0);let b=new Date(exp+'T00:00:00');return Math.ceil((b-a)/86400000)}
+function expiryBadge(x){let n=daysLeft(x.expiry);if(n===null)return '';if(n<0)return `<span class="badge expired">EXPIRED</span>`;if(n<=3)return `<span class="badge soon">${n} DAY${n===1?'':'S'} LEFT</span>`;if(n<30)return `<span class="badge ok">${n} DAYS</span>`;let w=Math.round(n/7);return `<span class="badge ok">${w} WEEK${w===1?'':'S'}</span>`}
+function addFood(){let food=$('food').value.trim();if(!food){alert('请先输入食物名称');return}let box=$('box').value.trim();if(box&&!boxes.some(b=>b.id===box)){if(confirm('这个 QR 还没有登记。现在先建立盒子吗？')){newBox(box);return}else return}let d=$('date').value||new Date().toISOString().slice(0,10);if(!$('days').value){$('days').value=daysDefault($('loc').value)}updateExpiry();foods.unshift({id:Date.now(),food,loc:$('loc').value,qty:$('qty').value,box,date:d,expiry:$('expiry').value,foodPhoto:foodPhotoData,locationPhoto:locationPhotoData});clearForm();persist();show('home')}
+function clearForm(){['food','qty','box','date','days','expiry'].forEach(id=>$(id).value='');$('loc').value='Fridge';$('foodPreview').innerHTML='';$('locationPreview').innerHTML='';$('boxInfo').textContent='';$('scanStatus').classList.add('hidden');foodPhotoData='';locationPhotoData=''}
+function removeFood(i){if(confirm('删除这项食物？')){foods.splice(i,1);persist()}}
+function render(){let f=foods.filter(x=>x.loc==='Fridge').length,fr=foods.filter(x=>x.loc==='Freezer').length,p=foods.filter(x=>x.loc==='Pantry').length;$('fridgeCount').textContent=f;$('freezerCount').textContent=fr;$('pantryCount').textContent=p;let q=($('q')?.value||'').toLowerCase();let arr=foods.map((x,i)=>({...x,i})).filter(x=>(currentFilter==='All'||x.loc===currentFilter)&&((x.food+' '+x.box+' '+x.loc).toLowerCase().includes(q)));let html=arr.length?arr.map(x=>card(x)).join(''):`<div class="empty">还没有记录<br><small>扫一扫 QR，开始记录你的食物 ❤️</small></div>`;$('list').innerHTML=html;if($('results'))$('results').innerHTML=html}
+function card(x){let box=boxes.find(b=>b.id===x.box);let img=x.foodPhoto||x.locationPhoto;return `<div class="foodcard"><div class="foodrow">${img?`<img class="thumb" src="${img}" alt="${esc(x.food)}">`:`<div class="thumb placeholder">🍱</div>`}<div class="foodinfo"><div class="foodname">${esc(x.food)}</div><div class="meta">${esc(x.loc)}<br>📦 ${esc(x.box||'未指定')}${box?' · '+esc(box.name):''}</div>${expiryBadge(x)}<div class="amount">Amount<b>${esc(x.qty||'Full')}</b></div></div></div><div class="detail"><div class="small">放入：${formatDate(x.date)}${x.expiry?' · 到期提醒：'+formatDate(x.expiry):''}</div>${x.locationPhoto?`<img src="${x.locationPhoto}" alt="放置位置"><div class="small">📍 放置位置照片</div>`:''}<div class="actions" style="margin-top:10px"><button class="light" onclick="editFood(${x.i})">编辑</button><button class="danger" onclick="removeFood(${x.i})">删除</button></div></div></div>`}
+function editFood(i){let x=foods[i];$('food').value=x.food;$('loc').value=x.loc;$('qty').value=x.qty||'';$('box').value=x.box||'';$('date').value=x.date||'';$('days').value=x.date&&x.expiry?Math.max(1,Math.round((new Date(x.expiry)-new Date(x.date))/86400000)):daysDefault(x.loc);$('expiry').value=x.expiry||'';foodPhotoData=x.foodPhoto||'';locationPhotoData=x.locationPhoto||'';$('foodPreview').innerHTML=x.foodPhoto?`<img class="photo" src="${x.foodPhoto}">`:'';$('locationPreview').innerHTML=x.locationPhoto?`<img class="photo" src="${x.locationPhoto}">`:'';foods.splice(i,1);show('add')}
+function renderBoxes(){if(!$('boxList'))return;if(!boxes.length){$('boxList').innerHTML='<div class="empty">还没有盒子。按「＋新增」绑定第一个 QR。</div>';return}$('boxList').innerHTML=boxes.map((b,i)=>`<div class="boxitem"><div><b>${esc(b.id)}</b><br><span class="small">${esc(b.name||'未命名盒子')} ${b.note?'· '+esc(b.note):''}</span></div><button class="light" onclick="deleteBox(${i})">删除</button></div>`).join('')}
+function newBox(prefill=''){stopBoxScan();$('boxId').value=prefill;$('boxName').value='';$('boxNote').value='';show('boxForm')}
+function saveBox(){let id=$('boxId').value.trim(),name=$('boxName').value.trim();if(!id){alert('请输入或扫描 QR 编号');return}if(boxes.some(b=>b.id===id)){alert('这个 QR 已经登记过了');return}boxes.push({id,name:name||id,note:$('boxNote').value.trim()});persist();show('boxes')}
+function deleteBox(i){if(confirm('删除这个盒子登记？不会删除已经保存的食物记录。')){boxes.splice(i,1);persist()}}
+function showBoxInfo(){let id=$('box').value.trim(),b=boxes.find(x=>x.id===id);$('boxInfo').textContent=b?'✅ 已登记：'+b.name:'⚠️ 这个 QR 尚未登记；保存时可以建立盒子。'}
+function previewFood(input){let file=input.files[0];if(!file)return;resizeImage(file,1000).then(data=>{foodPhotoData=data;$('foodPreview').innerHTML=`<img class="photo" src="${data}" alt="食物照片">`})}
+function previewLocation(input){let file=input.files[0];if(!file)return;resizeImage(file,1000).then(data=>{locationPhotoData=data;$('locationPreview').innerHTML=`<img class="photo" src="${data}" alt="放置位置">`})}
+function resizeImage(file,max){return new Promise((resolve,reject)=>{let r=new FileReader();r.onload=e=>{let img=new Image();img.onload=()=>{let scale=Math.min(1,max/Math.max(img.width,img.height));let c=document.createElement('canvas');c.width=Math.round(img.width*scale);c.height=Math.round(img.height*scale);c.getContext('2d').drawImage(img,0,0,c.width,c.height);resolve(c.toDataURL('image/jpeg',.78))};img.src=e.target.result};r.onerror=reject;r.readAsDataURL(file)})}
+async function startScan(){if(!('BarcodeDetector'in window)){alert('你的 Chrome 暂不支持直接相机扫描 QR。可以使用「QR照片」；或者手动输入 QR。');return}try{detector=new BarcodeDetector({formats:['qr_code']});stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:'environment'}}});$('video').srcObject=stream;$('scanner').classList.remove('hidden');scanning=true;await $('video').play();scanLoop()}catch(e){alert('请允许 Chrome 使用相机，然后再试一次。')}}
+async function scanLoop(){if(!scanning)return;try{let codes=await detector.detect($('video'));if(codes.length&&codes[0].rawValue){let id=codes[0].rawValue;$('box').value=id;$('scanStatus').textContent='✅ 已扫描：'+id;$('scanStatus').classList.remove('hidden');showBoxInfo();stopScan();return}}catch(e){}requestAnimationFrame(scanLoop)}
+function stopScan(){scanning=false;if(stream){stream.getTracks().forEach(t=>t.stop());stream=null}if($('scanner'))$('scanner').classList.add('hidden')}
+async function scanPhoto(input){let file=input.files[0];if(!file)return;if(!('BarcodeDetector'in window)){alert('浏览器暂不支持照片读取 QR，请使用相机扫描或手动输入。');return}try{detector=detector||new BarcodeDetector({formats:['qr_code']});let data=await resizeImage(file,1600),img=new Image();img.onload=async()=>{try{let c=document.createElement('canvas');c.width=img.width;c.height=img.height;c.getContext('2d').drawImage(img,0,0);let codes=await detector.detect(c);if(codes.length){$('box').value=codes[0].rawValue;$('scanStatus').textContent='✅ 已从照片识别：'+codes[0].rawValue;$('scanStatus').classList.remove('hidden');showBoxInfo()}else alert('没有找到 QR，请拍清楚一点。')}catch(e){alert('照片识别失败，请再拍一张清楚的 QR。')}};img.src=data}catch(e){alert('照片读取失败。')}}
+async function startBoxScan(){if(!('BarcodeDetector'in window)){alert('你的 Chrome 暂不支持相机扫描 QR，请手动输入 QR。');return}try{detector=new BarcodeDetector({formats:['qr_code']});boxStream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:'environment'}}});$('boxVideo').srcObject=boxStream;$('boxScanArea').classList.remove('hidden');boxScanning=true;await $('boxVideo').play();boxScanLoop()}catch(e){alert('请允许 Chrome 使用相机。')}}
+async function boxScanLoop(){if(!boxScanning)return;try{let codes=await detector.detect($('boxVideo'));if(codes.length&&codes[0].rawValue){$('boxId').value=codes[0].rawValue;stopBoxScan();return}}catch(e){}requestAnimationFrame(boxScanLoop)}
+function stopBoxScan(){boxScanning=false;if(boxStream){boxStream.getTracks().forEach(t=>t.stop());boxStream=null}if($('boxScanArea'))$('boxScanArea').classList.add('hidden')}
+$('date').value=new Date().toISOString().slice(0,10);$('days').value=daysDefault('Fridge');updateExpiry();render();renderBoxes();
+</script></body></html>

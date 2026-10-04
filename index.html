@@ -21,7 +21,13 @@
 <section id="add" class="hidden"><div class="card">
 <div class="titleline"><h3>➕ Add Food</h3><button class="light" onclick="show('boxes')">📦 Manage Boxes</button></div>
 <label>食物名称</label><input id="food" placeholder="例如：三文鱼">
-<div class="row"><div><label>位置</label><select id="loc" onchange="suggestDays()"><option>Fridge</option><option>Freezer</option><option>Pantry</option></select></div><div><label>数量</label><input id="qty" placeholder="例如：2份"></div></div>
+<div class="row"><div><label>位置</label><select id="loc" onchange="suggestDays()"><option>Fridge</option><option>Freezer</option><option>Pantry</option>
+<option>Dry Kitchen</option>
+<option>Wet Kitchen</option>
+<option>Studio Kitchen</option>
+<option>Store Room</option>
+<option>Other</option>
+</select></div><div><label>数量</label><input id="qty" placeholder="例如：2份"></div></div>
 <label>📦 扫描 QR 盒子</label><div class="actions"><button type="button" onclick="startScan()">📷 扫描QR</button><button type="button" class="light" onclick="document.getElementById('qrPhoto').click()">🖼️ QR照片</button></div>
 <input id="box" placeholder="扫描后自动填写，例如 F&S-XXL-01" oninput="showBoxInfo()"><input id="qrPhoto" type="file" accept="image/*" capture="environment" class="hidden" onchange="scanPhoto(this)">
 <div id="boxInfo" class="small"></div><div id="scanStatus" class="status hidden"></div>

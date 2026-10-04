@@ -71,10 +71,11 @@
 <button class="fab" onclick="quickAdd()">＋</button>
 <nav class="bottomNav"><button id="navFood" class="active" onclick="showPage('food')"><span class="ico">🍎</span>Food</button><button id="navRecipes" onclick="showPage('recipes')"><span class="ico">👩🏻‍🍳</span>Recipes</button><button id="navShopping" onclick="showPage('shopping')"><span class="ico">🛒</span>Shopping</button><button id="navMore" onclick="showPage('more')"><span class="ico">⚙️</span>More</button></nav>
 <script>
-let foods=JSON.parse(localStorage.getItem('myKitchenFoods')||'[]');
-let boxes=JSON.parse(localStorage.getItem('myKitchenBoxes')||'[]');
-let recipes=JSON.parse(localStorage.getItem('myKitchenRecipes')||'[]');
-let shopping=JSON.parse(localStorage.getItem('myKitchenShopping')||'[]');
+function loadData(k){try{return JSON.parse(localStorage.getItem(k)||'[]')}catch(e){return[]}}
+let foods=loadData('myKitchenFoods');
+let boxes=loadData('myKitchenBoxes');
+let recipes=loadData('myKitchenRecipes');
+let shopping=loadData('myKitchenShopping');
 let locationPhotoData='',foodPhotoData='',stream=null,boxStream=null,scanning=false,boxScanning=false,detector=null,currentFilter='All',currentCategory='All',recipeCategory='All',shopFilter='To Buy';
 const $=id=>document.getElementById(id);
 function persist(){try{localStorage.setItem('myKitchenFoods',JSON.stringify(foods));localStorage.setItem('myKitchenBoxes',JSON.stringify(boxes));localStorage.setItem('myKitchenRecipes',JSON.stringify(recipes));localStorage.setItem('myKitchenShopping',JSON.stringify(shopping));renderFoods();renderBoxes();renderRecipes();renderShopping()}catch(e){alert('手机储存空间不足，请减少照片大小。')}}

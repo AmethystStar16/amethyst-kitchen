@@ -30,7 +30,7 @@
 <section id="shoppingPage" class="hidden">
 <div class="sectionTitle"><h2>🛒 Shopping 购物清单</h2></div>
 <div class="filters"><button id="shopToBuy" class="active" onclick="setShopFilter('To Buy')">To Buy</button><button id="shopPurchased" onclick="setShopFilter('Purchased')">Purchased</button><button id="shopAll" onclick="setShopFilter('All')">All</button></div>
-<div class="card"><div class="row"><input id="shopInput" placeholder="Add item..." onkeydown="if(event.key==='Enter')addShopping()"><button class="primary" onclick="addShopping()">＋</button></div><div class="row"><select id="shopCategory"><option>Meat</option><option>Seafood</option><option>Vegetables</option><option>Fruits</option><option>Dairy</option><option>Canned Food</option><option>Dry Goods</option><option>Condiments</option><option>Snacks</option><option>Drinks</option><option>Others</option></select><input id="shopQty" placeholder="Qty"></div></div>
+<div class="card"><div class="row"><input id="shopInput" placeholder="Add item..." onkeydown="if(event.key==='Enter')addShopping()"><button class="primary" onclick="addShopping()">＋</button></div><div class="row"><select id="shopCategory"><option>Meat</option><option>Seafood</option><option>Vegetables</option><option>Fruits</option><option>Dairy</option><option>Canned Food</option><option>Dry Goods</option><option>Condiments</option><option>Snacks</option><option>Drinks</option><option>Others</option></select><input id="shopQty" placeholder="Qty"></div><div class="row"><div><label>📅 购买日期</label><input id="shopBuyDate" type="date"></div><div><label>📦 预计收到</label><input id="shopReceiveDate" type="date"></div></div></div>
 <div id="shoppingList" class="card"></div>
 </section>
 
